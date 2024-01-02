@@ -61,15 +61,15 @@ public abstract class FileHandleStream extends FileHandle {
         throw new UnsupportedOperationException();
     }
     
-    public void mkdirs() {
+    public boolean mkdirs() {
         throw new UnsupportedOperationException();
     }
     
-    public void mkdir() {
+    public boolean mkdir() {
         throw new UnsupportedOperationException();
     }
     
-    public void createNewFile() {
+    public boolean createNewFile() {
         throw new UnsupportedOperationException();
     }
     
