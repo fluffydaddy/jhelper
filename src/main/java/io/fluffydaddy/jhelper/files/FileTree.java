@@ -16,7 +16,7 @@
 
 package io.fluffydaddy.jhelper.files;
 
-import io.fluffydaddy.jutils.Array;
+import io.fluffydaddy.jutils.collection.Array;
 
 import java.io.File;
 import java.io.IOException;

@@ -43,7 +43,7 @@ public class FileHandle {
     
     /**
      * Creates a new absolute FileHandle for the file name. Use this for tools on the desktop that don't need any of the backends.
-     * Do not use this constructor in case you write something cross-platform. Use the {@link Files} interface instead.
+     * Do not use this constructor in case you write something cross-platform.
      *
      * @param fileName the filename.
      */
@@ -56,8 +56,8 @@ public class FileHandle {
     }
     
     /**
-     * Creates a new absolute FileHandle for the {@link File}. Use this for tools on the desktop that don't need any of the
-     * backends. Do not use this constructor in case you write something cross-platform. Use the {@link Files} interface instead.
+     * Creates a new absolute FileHandle. Use this for tools on the desktop that don't need any of the
+     * backends. Do not use this constructor in case you write something cross-platform.
      *
      * @param file the file.
      */
@@ -157,7 +157,7 @@ public class FileHandle {
     /**
      * Returns a stream for reading this file as bytes.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public InputStream read() {
         if (type == FileType.Classpath || (type == FileType.Internal && !file.exists()) || (type == FileType.Local && !file.exists())) {
@@ -177,7 +177,7 @@ public class FileHandle {
     /**
      * Returns a buffered stream for reading this file as bytes.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public BufferedInputStream read(int bufferSize) {
         return new BufferedInputStream(read(), bufferSize);
@@ -186,7 +186,7 @@ public class FileHandle {
     /**
      * Returns a reader for reading this file as characters.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public Reader reader() {
         return new InputStreamReader(read());
@@ -195,7 +195,7 @@ public class FileHandle {
     /**
      * Returns a reader for reading this file as characters.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public Reader reader(String charset) {
         try {
@@ -208,7 +208,7 @@ public class FileHandle {
     /**
      * Returns a buffered reader for reading this file as characters.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public BufferedReader reader(int bufferSize) {
         return new BufferedReader(new InputStreamReader(read()), bufferSize);
@@ -217,7 +217,7 @@ public class FileHandle {
     /**
      * Returns a buffered reader for reading this file as characters.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public BufferedReader reader(int bufferSize, String charset) {
         try {
@@ -230,7 +230,7 @@ public class FileHandle {
     /**
      * Reads the entire file into a string using the platform's default charset.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public String readString() {
         return readString(null);
@@ -239,7 +239,7 @@ public class FileHandle {
     /**
      * Reads the entire file into a string using the specified charset.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public String readString(String charset) {
         int fileLength = (int) length();
@@ -269,7 +269,7 @@ public class FileHandle {
     /**
      * Reads the entire file into a byte array.
      *
-     * @throw RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
+     * @throws RuntimeException if the file handle represents a directory, doesn't exist, or could not be read.
      */
     public byte[] readBytes() {
         int length = (int) length();
@@ -341,7 +341,7 @@ public class FileHandle {
      * Returns a stream for writing to this file. Parent directories will be created if necessary.
      *
      * @param append If false, this file will be overwritten if it exists, otherwise it will be appended.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public OutputStream write(boolean append) {
@@ -362,7 +362,7 @@ public class FileHandle {
      * will be created if necessary.
      *
      * @param append If false, this file will be overwritten if it exists, otherwise it will be appended.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public void write(InputStream input, boolean append) {
@@ -394,7 +394,7 @@ public class FileHandle {
      * Returns a writer for writing to this file using the default charset. Parent directories will be created if necessary.
      *
      * @param append If false, this file will be overwritten if it exists, otherwise it will be appended.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public Writer writer(boolean append) {
@@ -406,7 +406,7 @@ public class FileHandle {
      *
      * @param append  If false, this file will be overwritten if it exists, otherwise it will be appended.
      * @param charset May be null to use the default charset.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public Writer writer(boolean append, String charset) {
@@ -428,7 +428,7 @@ public class FileHandle {
      * Writes the specified string to the file using the default charset. Parent directories will be created if necessary.
      *
      * @param append If false, this file will be overwritten if it exists, otherwise it will be appended.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public void writeString(String string, boolean append) {
@@ -440,7 +440,7 @@ public class FileHandle {
      *
      * @param append  If false, this file will be overwritten if it exists, otherwise it will be appended.
      * @param charset May be null to use the default charset.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public void writeString(String string, boolean append, String charset) {
@@ -463,7 +463,7 @@ public class FileHandle {
      * Writes the specified bytes to the file. Parent directories will be created if necessary.
      *
      * @param append If false, this file will be overwritten if it exists, otherwise it will be appended.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public void writeBytes(byte[] bytes, boolean append) {
@@ -484,7 +484,7 @@ public class FileHandle {
      * Writes the specified bytes to the file. Parent directories will be created if necessary.
      *
      * @param append If false, this file will be overwritten if it exists, otherwise it will be appended.
-     * @throw RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
+     * @throws RuntimeException if this file handle represents a directory, if it is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file, or if it could not be written.
      */
     public void writeBytes(byte[] bytes, int offset, int length, boolean append) {
@@ -506,7 +506,7 @@ public class FileHandle {
      * directory. On the desktop, an {@link FileType#Internal} handle to a directory on the classpath will return a zero length
      * array.
      *
-     * @throw RuntimeException if this file is an {@link FileType#Classpath} file.
+     * @throws RuntimeException if this file is an {@link FileType#Classpath} file.
      */
     public FileHandle[] list() {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot list a classpath directory: " + file);
@@ -523,7 +523,7 @@ public class FileHandle {
      * represents a file and not a directory. On the desktop, an {@link FileType#Internal} handle to a directory on the classpath
      * will return a zero length array.
      *
-     * @throw RuntimeException if this file is an {@link FileType#Classpath} file.
+     * @throws RuntimeException if this file is an {@link FileType#Classpath} file.
      */
     public FileHandle[] list(String suffix) {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot list a classpath directory: " + file);
@@ -568,7 +568,7 @@ public class FileHandle {
     /**
      * Returns a handle to the child with the specified name.
      *
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} and the child
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} and the child
      * doesn't exist.
      */
     public FileHandle child(String name) {
@@ -579,7 +579,7 @@ public class FileHandle {
     /**
      * Returns a handle to the sibling with the specified name.
      *
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} and the sibling
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} and the sibling
      * doesn't exist, or this file is the root.
      */
     public FileHandle sibling(String name) {
@@ -597,7 +597,7 @@ public class FileHandle {
     }
     
     /**
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
      */
     public boolean mkdirs() {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot mkdirs with a classpath file: " + file);
@@ -637,7 +637,7 @@ public class FileHandle {
     /**
      * Deletes this file or empty directory and returns success. Will not delete a directory that has children.
      *
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
      */
     public boolean delete() {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot delete a classpath file: " + file);
@@ -654,7 +654,7 @@ public class FileHandle {
     /**
      * Deletes this file or directory and all children, recursively.
      *
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
      */
     public boolean deleteDirectory() {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot delete a classpath file: " + file);
@@ -665,7 +665,7 @@ public class FileHandle {
     /**
      * Deletes all children of this directory, recursively.
      *
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
      */
     public void emptyDirectory() {
         emptyDirectory(false);
@@ -674,7 +674,7 @@ public class FileHandle {
     /**
      * Deletes all children of this directory, recursively. Optionally preserving the folder structure.
      *
-     * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
+     * @throws RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
      */
     public void emptyDirectory(boolean preserveTree) {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot delete a classpath file: " + file);
@@ -690,7 +690,7 @@ public class FileHandle {
      * a directory, this directory is copied into it recursively, overwriting existing files, or 3) if the destination doesn't
      * exist, {@link #mkdirs()} is called on the destination and this directory is copied into it recursively.
      *
-     * @throw RuntimeException if the destination file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file,
+     * @throws RuntimeException if the destination file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file,
      * or copying failed.
      */
     public void copyTo(FileHandle dest) {
@@ -713,7 +713,7 @@ public class FileHandle {
     /**
      * Moves this file to the specified file, overwriting the file if it already exists.
      *
-     * @throw RuntimeException if the source or destination file handle is a {@link FileType#Classpath} or
+     * @throws RuntimeException if the source or destination file handle is a {@link FileType#Classpath} or
      * {@link FileType#Internal} file.
      */
     public void moveTo(FileHandle dest) {
@@ -806,8 +806,7 @@ public class FileHandle {
     static private void copyDirectory(FileHandle sourceDir, FileHandle destDir) {
         destDir.mkdirs();
         FileHandle[] files = sourceDir.list();
-        for (int i = 0, n = files.length; i < n; i++) {
-            FileHandle srcFile = files[i];
+        for (FileHandle srcFile : files) {
             FileHandle destFile = destDir.child(srcFile.name());
             if (srcFile.isDirectory()) copyDirectory(srcFile, destFile);
             else copyFile(srcFile, destFile);
@@ -818,8 +817,7 @@ public class FileHandle {
     public enum FileType {
         /**
          * Path relative to the root of the classpath. Classpath files are always readonly. Note that classpath files are not
-         * compatible with some functionality on Android, such as {@link Audio#newSound(FileHandle)} and
-         * {@link Audio#newMusic(FileHandle)}.
+         * compatible with some functionality on Android.
          */
         Classpath,
         
