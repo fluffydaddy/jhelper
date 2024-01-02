@@ -599,24 +599,24 @@ public class FileHandle {
     /**
      * @throw RuntimeException if this file handle is a {@link FileType#Classpath} or {@link FileType#Internal} file.
      */
-    public void mkdirs() {
+    public boolean mkdirs() {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot mkdirs with a classpath file: " + file);
         if (type == FileType.Internal) throw new RuntimeException("Cannot mkdirs with an internal file: " + file);
-        file().mkdirs();
+        return file().mkdirs();
     }
     
-    public void mkdir() {
+    public boolean mkdir() {
         if (type == FileType.Classpath) throw new RuntimeException("Cannot mkdir with a classpath file: " + file);
         if (type == FileType.Internal) throw new RuntimeException("Cannot mkdir with an internal file: " + file);
-        file().mkdir();
+        return file().mkdir();
     }
     
-    public void createNewFile() throws IOException {
+    public boolean createNewFile() throws IOException {
         if (type == FileType.Classpath)
             throw new RuntimeException("Cannot create new file with a classpath file: " + file);
         if (type == FileType.Internal)
             throw new RuntimeException("Cannot create new file with an internal file: " + file);
-        file().createNewFile();
+        return file().createNewFile();
     }
     
     /**
